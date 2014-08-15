@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ac_timeout_titles">
+        <item>15 seconds</item>
+        <item>30 seconds</item>
+        <item>1 minute</item>
+        <item>2 minutes</item>
+        <item>5 minutes</item>
+    </string-array>
+     <string-array name="ac_timeout_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>120</item>
+        <item>300</item>
+    </string-array>
+     <string-array name="button_titles">
+        <item>Power Key</item>
+        <item>Volume keys</item>
+        <item>Camera Key(if present)</item>
+    </string-array>
+    <string-array name="button_values">
+        <item>power</item>
+        <item>vol</item>
+        <item>cam</item>
+    </string-array>
+
+    <string-array name="tone_titles">
+        <item>Siren 1</item>
+        <item>Siren 2</item>
+        <item>Siren 3</item>
+    </string-array>
+    <string-array name="tone_values">
+        <item>siren1</item>
+        <item>siren2</item>
+        <item>siren3</item>
+    </string-array>
+</resources>

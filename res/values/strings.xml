@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="app_name">CareFree Travel</string>
+<string name="pref_ringtone_silent" >Silent</string>
+<string name="first_start">Changes to default values will be Shown from next startup.</string>
+</resources>
