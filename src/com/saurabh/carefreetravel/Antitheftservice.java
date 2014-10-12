@@ -18,6 +18,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Handler;
 import android.os.PowerManager;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
@@ -37,6 +38,7 @@ private Sensor mProximity;
 private SharedPreferences settings;
 private PowerManager pm;
 private Context context;
+private static boolean proxy;
 ComponentName name;
 private NotificationCompat.Builder mBuilder;
 AudioManager am;
@@ -46,8 +48,7 @@ private RemoteReceiver receiver;
 private MediaPlayer blank;
 	public Antitheftservice() 
 	 {
-	
-		super("Anti Theft Service");
+	super("Anti Theft Service");
 	}
 	@Override
 		public void onCreate() {
@@ -136,10 +137,11 @@ private MediaPlayer blank;
 			Log.d("service1", "Screen is now off!");
 	    break;
 	    }
+		proxy=true;
 	}
 	
 	if(check)
-	{mSensorManager.registerListener(Antitheftservice.this, mProximity, SensorManager.SENSOR_DELAY_NORMAL);
+	{mSensorManager.registerListener(Antitheftservice.this, mProximity, SensorManager.SENSOR_STATUS_ACCURACY_LOW);
 	//this.registerReceiver(receiver, filter);
 	}
 	while(check){
@@ -179,25 +181,40 @@ private MediaPlayer blank;
 	}
 	
 	@Override
-	public void onSensorChanged(SensorEvent event) {
-		Log.d("service1", "Current value is:" +event.values[0] );
-		if(event.values[0]>=mProximity.getMaximumRange()){
-			//AudioManager mAudioManager = (AudioManager) this.context.getSystemService(AUDIO_SERVICE);
-			switch(tone)
-			{
-			case "siren2" :Alertplayer(R.raw.siren2);
-                           break;
-			case "siren3" :Alertplayer(R.raw.siren3);
-                           break;
-			default :     Alertplayer(R.raw.siren1); 
-                           break;
-			}
-			if(vibrate)
-			{
-			Vibrator v= (Vibrator) getSystemService(context.VIBRATOR_SERVICE);
-			v.vibrate(2000);
-			}
-		
+	public void onSensorChanged(SensorEvent event)
+	{
+		proxy=true;
+		if(event.values[0]<mProximity.getMaximumRange())
+			{proxy=false;
+			Log.d("service1", "Proxy check here1:"+proxy);
+			Log.d("service1", "Current low value is:" +event.values[0] );}
+		 if(event.values[0]>=mProximity.getMaximumRange()){
+			 Log.d("service1", "Current high value is:" +event.values[0] );
+			 new Handler().postDelayed(new Runnable() {
+				
+				@Override
+				public void run() {
+					Log.d("service1", "Proxy check here alarm:"+proxy);
+					if(proxy)
+					 {
+					switch(tone)
+					{
+					case "siren2" :Alertplayer(R.raw.siren2);
+		                           break;
+					case "siren3" :Alertplayer(R.raw.siren3);
+		                           break;
+					default :      Alertplayer(R.raw.siren1); 
+		                           break;
+					}
+					if(vibrate)
+					{
+					Vibrator v= (Vibrator) getSystemService(context.VIBRATOR_SERVICE);
+					v.vibrate(2000);
+					}
+					 }
+					
+				}
+			},2000);		 
 		
 			}
 	}
