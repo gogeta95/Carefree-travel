@@ -2,36 +2,36 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
     <CheckBoxPreference 
         android:key="start" 
-        android:title="Start service" 
-        android:summary="Starts the anti-theft service"/>
+        android:title="@string/Start" 
+        android:summary="@string/start_summary"/>
 
  
     <PreferenceCategory 
-        android:title="ACTIVATION" />
+        android:title="@string/activation" />
     
     <ListPreference 
-        android:defaultValue="60"
+        android:defaultValue="30"
         android:entries="@array/ac_timeout_titles"
         android:entryValues="@array/ac_timeout_values" 
         android:key="ac_time_out" 
-        android:title="Service Timeout" 
-        android:summary="Set the time after which service starts(When Display turns off)"/>
+        android:title="@string/Service_Timeout" 
+        android:summary="@string/timeout_summary"/>
     <PreferenceCategory 
-        android:title="Alert Tone"/>
+        android:title="@string/Alert_Tone"/>
         <ListPreference
         android:defaultValue="siren1"
         android:key="tone"
         android:entries="@array/tone_titles"
         android:entryValues="@array/tone_values"
-        android:title="Select Tone"/>
+        android:title="@string/Select_Tone"/>
     <CheckBoxPreference 
         android:key="vibrate" 
-        android:title="Vibration" />
+        android:title="@string/Vibration" />
     <PreferenceCategory 
-        android:title="DEACTIVATION"/>
+        android:title="@string/DEACTIVATION"/>
 <ListPreference 
-    android:title="Button"
-    android:summary="Choose the button to deactivate Alarm"
+    android:title="@string/Button"
+    android:summary="@string/button_summary"
     android:key="button"
     android:defaultValue="volume"
     android:entries="@array/button_titles"

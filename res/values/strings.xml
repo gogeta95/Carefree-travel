@@ -3,4 +3,18 @@
 <string name="app_name">CareFree Travel</string>
 <string name="pref_ringtone_silent" >Silent</string>
 <string name="first_start">Changes to default values will be Shown from next startup.</string>
+<string name="button_warning">Only Choose the button Which exists on your device!! otherwise I am not responsible for any Unwanted Sounds!!</string>
+<string name="notif_content">Waiting for Display to turn off</string>
+<string name="notif_ticker">Waiting for Display off</string>
+<string name="activation">ACTIVATION</string>
+<string name="Service_Timeout">Service Timeout</string>
+<string name="timeout_summary">Set the time after which service starts(When Display turns off)</string>
+<string name="Alert_Tone">Alert Tone</string>
+<string name="Select_Tone">Select Tone</string>
+<string name="Vibration">Vibration</string>
+<string name="DEACTIVATION">DEACTIVATION</string>
+<string name="Button">Button</string>
+<string name="button_summary">Choose the button to deactivate Alarm</string>
+<string name="Start">Start service</string>
+<string name="start_summary">Starts the anti-theft service</string>
 </resources>

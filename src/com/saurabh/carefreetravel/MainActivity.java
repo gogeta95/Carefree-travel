@@ -72,7 +72,7 @@ public class MainActivity extends PreferenceActivity {
 			
 			@Override
 			public boolean onPreferenceClick(Preference preference) {
-				Toast.makeText(MainActivity.this,"Only Choose the button Which exists on your device!! otherwise I am not responsible for any Unwanted Sounds!!",Toast.LENGTH_LONG).show();
+				Toast.makeText(MainActivity.this,R.string.button_warning,Toast.LENGTH_LONG).show();
 				return false;
 			}
 		});

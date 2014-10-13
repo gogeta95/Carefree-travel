@@ -77,9 +77,9 @@ private MediaPlayer blank;
 			mBuilder =
 			        new NotificationCompat.Builder(this)
 			        .setSmallIcon(R.drawable.ic_stat_notify)
-			        .setContentTitle("CareFree Travel")
-			        .setContentText("Waiting for Display to turn off")
-			        .setTicker("Waiting for Display off")
+			        .setContentTitle(getText(R.string.app_name))
+			        .setContentText(getText(R.string.notif_content))
+			        .setTicker(getText(R.string.notif_ticker))
 			        .setOngoing(true)
 			        .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.ic_stat_notify_large));
 			// Creates an explicit intent for an Activity in app
@@ -141,7 +141,7 @@ private MediaPlayer blank;
 	}
 	
 	if(check)
-	{mSensorManager.registerListener(Antitheftservice.this, mProximity, SensorManager.SENSOR_STATUS_ACCURACY_LOW);
+	{mSensorManager.registerListener(Antitheftservice.this, mProximity, SensorManager.SENSOR_DELAY_NORMAL);
 	//this.registerReceiver(receiver, filter);
 	}
 	while(check){
@@ -187,7 +187,8 @@ private MediaPlayer blank;
 		if(event.values[0]<mProximity.getMaximumRange())
 			{proxy=false;
 			Log.d("service1", "Proxy check here1:"+proxy);
-			Log.d("service1", "Current low value is:" +event.values[0] );}
+			Log.d("service1", "Current low value is:" +event.values[0] );
+			}
 		 if(event.values[0]>=mProximity.getMaximumRange()){
 			 Log.d("service1", "Current high value is:" +event.values[0] );
 			 new Handler().postDelayed(new Runnable() {
