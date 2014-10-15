@@ -114,7 +114,6 @@ private MediaPlayer blank;
 		blank = MediaPlayer.create(this, R.raw.blank);
 		blank.setLooping(true);
 		blank.start();
-		this.registerReceiver(receiver, filter);
 	while(check){
 		try{
 		switch(ac_time){
@@ -137,12 +136,11 @@ private MediaPlayer blank;
 			Log.d("service1", "Screen is now off!");
 	    break;
 	    }
-		proxy=true;
 	}
 	
 	if(check)
 	{mSensorManager.registerListener(Antitheftservice.this, mProximity, SensorManager.SENSOR_DELAY_NORMAL);
-	//this.registerReceiver(receiver, filter);
+	this.registerReceiver(receiver, filter);
 	}
 	while(check){
 		Log.d("service1", "Maximum Value: " +mProximity.getMaximumRange());
