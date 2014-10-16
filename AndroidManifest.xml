@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.BODY_SENSORS"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
     <permission-group android:name="HARDWARE_CONTROLS"></permission-group>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
     
 
     <application

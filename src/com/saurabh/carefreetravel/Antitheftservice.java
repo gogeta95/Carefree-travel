@@ -66,6 +66,7 @@ private MediaPlayer blank;
 			tone= settings.getString("tone", "siren1");
 			button=settings.getString("button", "vol");
 			filter= new IntentFilter("android.media.VOLUME_CHANGED_ACTION");
+			filter.addAction("android.intent.action.PHONE_STATE");
 			switch(button)
 			{
 			case "power": filter.addAction("android.intent.action.SCREEN_ON");
@@ -113,7 +114,6 @@ private MediaPlayer blank;
 	protected void onHandleIntent(Intent intent) {	
 		blank = MediaPlayer.create(this, R.raw.blank);
 		blank.setLooping(true);
-		blank.start();
 	while(check){
 		try{
 		switch(ac_time){
@@ -134,10 +134,10 @@ private MediaPlayer blank;
             }
 		if(!pm.isScreenOn()){
 			Log.d("service1", "Screen is now off!");
+			blank.start();
 	    break;
 	    }
 	}
-	
 	if(check)
 	{mSensorManager.registerListener(Antitheftservice.this, mProximity, SensorManager.SENSOR_DELAY_NORMAL);
 	this.registerReceiver(receiver, filter);
@@ -213,7 +213,7 @@ private MediaPlayer blank;
 					 }
 					
 				}
-			},2000);		 
+			},1000);		 
 		
 			}
 	}
