@@ -44,7 +44,6 @@ private NotificationCompat.Builder mBuilder;
 AudioManager am;
 private IntentFilter filter;
 private RemoteReceiver receiver;
-//private PowerManager.WakeLock lock;
 private MediaPlayer blank;
 	public Antitheftservice() 
 	 {
@@ -139,7 +138,8 @@ private MediaPlayer blank;
 	    }
 	}
 	if(check)
-	{mSensorManager.registerListener(Antitheftservice.this, mProximity, SensorManager.SENSOR_DELAY_NORMAL);
+	{
+	mSensorManager.registerListener(Antitheftservice.this, mProximity, SensorManager.SENSOR_DELAY_NORMAL);
 	this.registerReceiver(receiver, filter);
 	}
 	while(check){
@@ -172,7 +172,10 @@ private MediaPlayer blank;
 		    // Because the ID remains unchanged, the existing notification is updated.
 		    mNotificationManager.cancel(mId);
 		mSensorManager.unregisterListener(this);
+		try{
 		this.unregisterReceiver(receiver);
+		}
+		catch(Exception e){}
 		SharedPreferences.Editor editor= settings.edit();
 		editor.putBoolean("start", false);
 		editor.commit();
