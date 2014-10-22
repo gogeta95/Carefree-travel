@@ -32,19 +32,17 @@ public class MainActivity extends PreferenceActivity {
 		SharedPreferences firststart = PreferenceManager.getDefaultSharedPreferences(this);
 		a = firststart.getBoolean("first", true);
 		if(a==true)
-		Toast.makeText(this, R.string.first_start,Toast.LENGTH_LONG).show();
-		
-		bindPreferenceSummaryToValue(findPreference("ac_time_out"));
-		bindPreferenceSummaryToValue(findPreference("tone"));
-		bindPreferenceSummaryToValue(findPreference("button"));
-		/*
-		 * code for first start info
-		 */
-		if(a==true)
 		{
+		Toast.makeText(this, R.string.first_start,Toast.LENGTH_LONG).show();
 		SharedPreferences.Editor editor= firststart.edit();
 		editor.putBoolean("first", false);
 		editor.commit();
+		}
+		else
+		{
+		bindPreferenceSummaryToValue(findPreference("ac_time_out"));
+		bindPreferenceSummaryToValue(findPreference("tone"));
+		bindPreferenceSummaryToValue(findPreference("button"));
 		}
 			 final Preference service= findPreference("start");
 		
